@@ -19,14 +19,14 @@ CUSTOM_LABELS = {
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Using device:", device)
 
-model = YOLO("yolov11m.pt").to(device)
+model = YOLO("models/yolov11m.pt").to(device)
 
 # Apply custom names
 model._names = model.names.copy()
 model._names.update(CUSTOM_LABELS)
 
 # Start webcam
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 if not cap.isOpened():
     print("Error: Cannot open camera")
     exit()
